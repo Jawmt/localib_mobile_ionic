@@ -11,9 +11,6 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -33,6 +30,10 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import ClientPage from './features/client/pages/ClientPage';
+import VehiculePage from './features/vehicule/pages/VehiculePage';
+import ReservationPage from './features/reservation/page/ReservationPage';
+import VehiculePageDetail from './features/vehicule/pages/VehiculePageDetail';
 
 setupIonicReact();
 
@@ -41,31 +42,27 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
+          <Route exact path="/reservations" component={ReservationPage} />
+          <Route exact path="/clients" component={ClientPage} />
+          <Route exact path="/vehicules" component={VehiculePage} />
+  
+          <Route  path="/vehicules/:id" component={VehiculePageDetail} />
           <Route exact path="/">
-            <Redirect to="/tab1" />
+            <Redirect to="/reservations" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
+          <IonTabButton tab="reservations" href="/reservations">
             <IonIcon icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
+            <IonLabel>Reservations</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
+          <IonTabButton tab="clients" href="/clients">
             <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
+            <IonLabel>Clients</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
+          <IonTabButton tab="vehicules" href="/vehicules">
             <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
+            <IonLabel>Vehicules</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
