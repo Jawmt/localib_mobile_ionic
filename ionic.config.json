@@ -1,0 +1,7 @@
+{
+  "name": "localib",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
